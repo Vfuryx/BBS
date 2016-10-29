@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'public.css'?>">
+	<link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'register.css'?>">
+</head>
+<body>
+	<header>
+	<nav class="top-nav">
+		<ul class="clearfix">
+			<li class="float-l"><a href='<?php echo "index.php?c=Index&p=front&a=index"?>'>主页</a></li>
+			<li class="float-r top-login">
+				<a id="active" href='<?php echo "index.php?c=Register&p=front&a=register"?>'>注册</a>
+				<a href='<?php echo "index.php?c=Login&p=front"?>'>登录</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="banner"></div>
+</header>
+	<div class="content">
+		<section class="register-from">
+			<form action="index.php?c=Register&p=front&a=signin" method="post" name="myform" onsubmit="return check()" >
+				<table>
+					<tr>
+						<td><label for="user" >用户名:</label></td>
+						<td><input class="register-input-text" id="user" type="text" name="user"></td>
+					</tr>
+					<tr>
+						<td><label  for="passw1">密码:</label></td>
+						<td><input class="register-input-text" id="passw1" type="password" name="passw"></td>
+					</tr>
+					<tr>
+						<td><label  for="passw2">密码:</label></td>
+						<td><input class="register-input-text" id="passw2" type="password" name="passw"></td>
+					</tr>
+					<tr>
+						<td><label  for="email">e-mail:</label></td>
+						<td><input class="register-input-text" id="email" type="email" name="email"></td>
+					</tr>
+					<tr>
+						<td><label  for="tele">Tele:</label></td>
+						<td><input class="register-input-text" id="tele" type="text" name="tele"></td>
+					</tr>
+					<tr>
+						<td><label  for="intro">介绍:</label></td>
+						<td><input class="register-input-text" id="intro" type="text" name="intro"></td>
+					</tr>
+				</table>
+				<input class="submit" type="submit" name="submit" value="注册">
+			</form>
+		</section>
+	</div>
+	<footer></footer>
+
+</body>
+
+<script type="text/javascript">
+	function check() {
+		if (myform.user.value==""||myform.passw1.value==""||myform.passw2.value==""||myform.email.value=="") {
+			alert("输入错误");
+			return false;
+		}else if(!(myform.passw1.value == myform.passw2.value)) {
+			alert("密码不一样");
+			return false;
+		}
+
+		return true;
+	}
+</script>
+
+</html>

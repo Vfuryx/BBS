@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'admin'.DS.'content'.DS.'css'.DS.'admin.css'?>">
+</head>
+<body>
+	<form action="" method="post" name="myform" onsubmit="return check()" >
+		<label for="user" >admin</label>
+		<input id="user" type="text" name="user">
+		<label for="passw">密码</label>
+		<input id="passw" type="password" name="passw">
+		<input type="submit" name="submit" value="提交">
+	</form>
+</body>
+<script type="text/javascript">
+	function check() {
+		if (myform.user.value==""||myform.passw.value=="") {
+			alert("用户或码不能为空");
+			return false;
+		}
+		return true;
+	}
+</script>
+
+</html>

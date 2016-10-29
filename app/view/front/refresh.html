@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url='<?php echo $url?>'">
+    <title>show</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background: url('./app/view/front/content/images/710365.jpg') no-repeat center center ;
+            /*background: url('<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'images'.DS.'710365.jpg'?>') no-repeat center center ;*/
+            /*background: url('<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'images'.DS.'710365.jpg'?>') no-repeat center center ;*/
+            /*background: url(“<?php echo CURR_VIEW_DIR.'content'.DS.'images'.DS.'710365.jpg'?>”) no-repeat center center ;*/
+            /*background: url('D:\xampp\htdocs\login2\app\view\front\content\images\710365.jpg') no-repeat center center ;*/
+            background-size: cover;
+        }
+        section{
+            min-width: 400px;
+            box-sizing: border-box;
+            position: absolute;
+            top:calc(50% - 20% );
+            left: calc(50% - 20% );
+
+            padding: 50px 100px;
+
+            width: 40%;
+            height: auto;
+
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            color: #e395a9;
+
+            border-radius: 10px;
+            box-shadow: rgba(249, 249, 249, 0.3) 0 0 0 10px;
+
+            background: rgba(249, 249, 249, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <section><?php echo $message?></section>
+</body>
+</html>

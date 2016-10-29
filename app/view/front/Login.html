@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'public.css'?>">
+	<link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'login.css'?>">
+</head>
+<body>
+
+<header>
+	<nav class="top-nav">
+		<ul class="clearfix">
+			<li class="float-l"><a href='<?php echo "index.php?c=Index&p=front&a=index"?>'>主页</a></li>
+			<li class="float-r top-login">
+				<a  href='<?php echo "index.php?c=Register&p=front&a=register"?>'>注册</a>
+				<a id="active" href='<?php echo "index.php?c=Login&p=front&a=login"?>'>登录</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="banner"></div>
+</header>
+<div class="content ">
+	<form class="con-login-mess clearfix" action="index.php?c=Login&p=front&a=signin" method="post" name="myform" onsubmit="return check()" >
+		<div class="clearfix">
+			<label for="user" >用户名:</label>
+			<input id="user" type="text" name="user">
+		</div>
+		<div class="clearfix">
+			<label for="passw">密码:</label>
+			<input id="passw" type="password" name="passw">
+		</div>
+		<a class="forgot" href="#">忘记密码？</a>
+
+		<input class="submit" type="submit"  value="登录">
+
+	</form>
+</div>
+<footer></footer>
+
+
+</body>
+<script type="text/javascript">
+	function check() {
+		if (myform.user.value==""||myform.passw.value=="") {
+			alert("用户或码不能为空");
+			return false;
+		}
+		return true;
+	}
+</script>
+
+</html>

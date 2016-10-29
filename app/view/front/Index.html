@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lyb</title>
+    <link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'public.css'?>">
+    <link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'index.css'?>">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <ul class="clearfix">
+                <li class="float-l"><a id="active" href='<?php echo "index.php?c=Index&p=front&a=index"?>'>主页</a></li>
+                <li class="float-r top-login">
+                    <!--<a href='<?php echo "index.php?c=Register&p=front"?>'>注册</a>-->
+                    <!--<a href='<?php echo "index.php?c=Login&p=front"?>'>登录</a>-->
+                    <?php echo $top_login?>
+                </li>
+            </ul>
+        </nav>
+        <div class="banner"></div>
+    </header>
+    <div class="main clearfix">
+        <aside class="main-left">
+            <div class="user">
+                <!--<img class="user-pic" src="./content/images/710366.jpg" alt="">-->
+                <img class="user-pic" src="<?php echo  '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'images'.DS.'710366.jpg'?>" alt="">
+                <h2 class="user-name"><?php echo $user?></h2>
+            </div>
+            <form name="myform" action="index.php?c=Index&p=front&a=post" method="post" onsubmit="return check()">
+                <textarea id="userpost" class="userpost" name="userpost"></textarea>
+                <button class="submit" >添加</button>
+            </form>
+
+        </aside>
+        <div class="main-right">
+            <section class="main-content">
+                <?php
+                    foreach($rows as $values){
+                        echo "
+                        <article class='con-module'>
+                        <img class='post-user-pic' src='".'.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'images'.DS.'710367.jpg'."' alt=''>
+                        <h3 class='post-user-name'>{$values['usernameid']}</h3>
+                        <p class='post-user-mess'>{$values['mess']}</p>
+                        <h5 class='post-user-time'>{$values['posttime']}</h5>
+                        </article>
+                ";}
+                ?>
+            </section>
+        </div>
+
+    </div>
+    <footer></footer>
+</body>
+
+<script type="text/javascript">
+
+    function check() {
+        if (myform.userpost.value=="") {
+            alert("不能为空");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</html>
+
