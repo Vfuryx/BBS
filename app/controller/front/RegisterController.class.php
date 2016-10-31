@@ -1,9 +1,9 @@
 <?php
 
-class RegisterController{
+class RegisterController extends Controller{
 
     function registerAction(){
-        require_once CURR_VIEW_DIR.$GLOBALS['c'].'.html';
+        require_once CURR_VIEW_DIR.'Register.html';
     }
 
 
@@ -24,22 +24,26 @@ class RegisterController{
 
             $message='重复用户，注册失败';
             $url='index.php?c=Register&p=front&a=register';
-            require_once CURR_VIEW_DIR.'refresh.html';
-            die();
+//            require_once CURR_VIEW_DIR.'refresh.html';
+//            die();
+            $this->jump($url,$message,3);
 
         } elseif($obj ->register($array)){
 //            echo "<script>alert('注册成功')</script>";
             $message='注册成功';
             $url='index.php?c=Login&p=front&a=login';
-            require_once CURR_VIEW_DIR.'refresh.html';
-            die();
+//            require_once CURR_VIEW_DIR.'refresh.html';
+//            die();
+            $this->jump($url,$message,3);
+
         }else{
 //            echo "<script>alert('注册失败')</script>";
 
             $message='注册失败';
             $url='index.php?c=Register&p=front&a=register';
-            require_once CURR_VIEW_DIR.'refresh.html';
-            die();
+//            require_once CURR_VIEW_DIR.'refresh.html';
+//            die();
+            $this->jump($url,$message,3);
         }
     }
 

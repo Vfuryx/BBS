@@ -12,13 +12,8 @@ class Model {
     }
 
     protected function intoLink(){
-
-        require ROOT_DIR.'/public/furyx/config.php';
-        $this->db_prefix=$params['db_prefix'];
-        $arr = $params;
-        $this->db = MysqlDB::getInstance($arr);
-
-
+        $this->db_prefix=$GLOBALS['config']['database']['db_prefix'];
+        $this->db = MysqlDB::getInstance($GLOBALS['config']['database']);
     }
 
 }

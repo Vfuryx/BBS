@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>lyb</title>
-    <link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'public.css'?>">
-    <link rel="stylesheet" href="<?php echo '.'.DS.'app'.DS.'view'.DS.'front'.DS.'content'.DS.'css'.DS.'index.css'?>">
+    <link rel="stylesheet" href="./app/view/front/content/css/public.css">
+    <link rel="stylesheet" href="./app/view/front/content/css/index.css">
 </head>
 <body>
     <header>
@@ -46,7 +46,24 @@
                         </article>
                 ";}
                 ?>
+                <div class="page" >
+                    <?php
+                if($totalRecord>1){
+                    echo "<a href='index.php?c=Index&p=front&a=index&cur=1'>首页</a>";
+                    //var_dump($curPage);
+                    for($i = 1 ; $i <= $totalRecord ; ++$i){
+                        if($i==$curPage){
+                            echo "<a id='page_active' href='index.php?c=Index&p=front&a=index&cur={$i}'>{$i}</a>";
+                        }else{
+                            echo "<a href='index.php?c=Index&p=front&a=index&cur={$i}'>{$i}</a>";
+                        }
+                    }
+                    echo "<a href='index.php?c=Index&p=front&a=index&cur={$totalRecord}'>尾页</a>";
+                    }
+                    ?>
+                </div>
             </section>
+
         </div>
 
     </div>

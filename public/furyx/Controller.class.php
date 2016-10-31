@@ -2,26 +2,37 @@
 
 class Controller{
 
+    /**
+     * @param $url 要跳转的连接
+     * @param string $content 提示信息
+     * @param int $time 间隔时间
+     */
 
-    public function getlogin(){
-        session_start();
-
-        $fun = isset($GLOBALS['f'])?$GLOBALS['f']:false;
-        if($fun=='getUser'){
-            unset($_SESSION['user']);
-        }
-
-        if($user = isset($_SESSION['user'])?$_SESSION['user']:false){
-            $top_login = "
-                <p class='welcom'>欢迎 {$user}</p>
-                <a href='index.php?c=Index&p=front&f=getUser'>注销</a>
-            ";
+    public function jump($url,$content='',$time=3 ){
+        if($content==''){
+//            立即跳转
+            header('Location:'.$url);
         }else{
-            $top_login = "
-                <a href='index.php?c=Register&p=front'>注册</a>
-                <a href='index.php?c=Login&p=front'>登录</a>
-            ";
+            //用户是否有自定义的跳转模板
+            if(file_exists(CURR_VIEW_DIR.'jump.html')){
+                require_once CURR_VIEW_DIR.'jump.html';
+            }else{
+//                使用默认模板
+                echo <<<html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="$time;url = $url">
+    <title>show</title>
+</head>
+<body>
+    <section>$content</section>
+</body>
+</html>
+html;
+            }
         }
-
+        die();
     }
 }

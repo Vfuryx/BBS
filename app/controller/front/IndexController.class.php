@@ -1,10 +1,10 @@
 <?php
-class IndexController{
+class IndexController extends Controller{
 
     function indexAction(){
 
 //        开启session
-        session_start();
+        @session_start();
 
         $index_model = new IndexModel();
 
@@ -21,10 +21,20 @@ class IndexController{
             ";
         }
 
-        $rows = $index_model->getMess();
+        //分页参数
+        //显示每一页多少条记录
+        $perPage = 5;
+        //总记录数 
+        $totalRecord = $index_model->getTotalPages($perPage);
+        //显示第几页 if $_GET['cur']<0 或者 大于总页数 则返回第一页
+        $curPage = isset($_GET['cur']) && $_GET['cur']>0&&$_GET['cur']<=$totalRecord ? $_GET['cur']:1;
+
+        $rows = $index_model->getMess($curPage,$perPage);
 
         //载入view
-        require_once CURR_VIEW_DIR.$GLOBALS['c'].'.html';
+        require_once CURR_VIEW_DIR.'Index.html';
+
+
     }
 
 
@@ -32,12 +42,13 @@ class IndexController{
     function logoutAction(){
         $index_model = new IndexModel();
         $index_model->logout();
-        header('Location: index.php?c=Index&p=front&a=index');
+        $url = 'index.php?c=Index&p=front&a=index';
+        $this->jump($url);
     }
 
 
     function postAction(){
-        session_start();
+        @session_start();
 
         $index_model = new IndexModel();
 
@@ -52,7 +63,10 @@ class IndexController{
             echo "<script>alert('失败')</script>";
         }
 
-        header('Location: index.php?c=Index&p=front&a=index');
+        $url = 'index.php?c=Index&p=front&a=index';
+
+
+        $this->jump($url);
     }
 
 }

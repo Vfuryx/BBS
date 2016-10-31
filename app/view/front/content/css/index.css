@@ -21,7 +21,7 @@
 
 }
 .main-content{
-    padding: 15px ;
+    padding: 15px 15px 0;
     border-radius: 7px;
 
     background: rgba(249, 249, 249, 0.5);
@@ -150,3 +150,29 @@
     color: #fbb6a3;
 }
 
+.page{
+    display: table;
+    margin: 0 auto ;
+    padding: 0 0 3px 0;
+}
+
+.page a{
+    display: inline-block;
+    margin: 0 5px;
+    padding: 4px 7px;
+
+    font-size: 18px;
+    line-height: 1.5;
+    color: #a6c0d3;
+
+    border: 1px solid #9e54a4;
+    border-radius: 5px;
+}
+
+.page a:hover{
+    background: rgba(221, 235, 230, 0.62);
+}
+.page #page_active{
+    background: rgba(221, 235, 230, 0.62);
+    box-shadow: #2E0154 0 0 10px -6px;
+}
